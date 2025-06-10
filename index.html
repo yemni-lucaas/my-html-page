@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yemnet Birhanu - Aspiring Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        
+        body {
+            margin: 0;
+            font-family: 'Lora', serif; 
+            line-height: 1.6;
+            color: #333;
+            background-color: #F8F4F9; 
+        }
+
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: #6A057F;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #E0BBE4; 
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #8839B2; 
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #6A057F; 
+            transform: translateY(-2px);
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #6A057F;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #E0BBE4;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            color: #8839B2;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #6A057F;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(255, 207, 219, 0.7), rgba(136, 57, 178, 0.5)), url('https://via.placeholder.com/1920x1080/FFB6C1/FFFFFF?text=Beautiful+Architectural+Background') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 150px 20px;
+            height: 80vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero-content {
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            color: #fff;
+            font-size: 4.5em;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+        }
+
+        .hero-content h2 {
+            color: #FFC7D4;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-content p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        section {
+            padding: 80px 0;
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-section {
+            background-color: #F8F4F9;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .about-text {
+            max-width: 800px;
+            text-align: justify;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        
+        .skills-section {
+            background-color: #E0BBE4; 
+            color: #444;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .skill-item h3 {
+            color: #6A057F;
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .skill-item p {
+            font-size: 1.0em;
+            color: #666;
+        }
+
+        .projects-section {
+            background-color: #F8F4F9;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-item {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-item h3 {
+            color: #6A057F;
+            font-size: 1.6em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .project-item p {
+            padding: 0 20px 15px;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .project-item .btn-small {
+            margin-bottom: 20px;
+        }
+
+        .writing-samples {
+            margin-top: 80px;
+            text-align: left;
+            background-color: #FFF;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .writing-samples h3 {
+            text-align: center;
+            color: #6A057F;
+            margin-bottom: 30px;
+        }
+
+        .writing-sample-item {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .writing-sample-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .writing-sample-item h4 {
+            color: #8839B2;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .writing-sample-item p {
+            font-size: 1.1em;
+            color: #444;
+            line-height: 1.8;
+        }
+
+
+        
+        .contact-section {
+            background-color: #E0BBE4; 
+            color: #444;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 40px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Lora', serif;
+            font-size: 1em;
+            background-color: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            border-color: #8839B2;
+            box-shadow: 0 0 8px rgba(136, 57, 178, 0.2);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+        }
+
+        
+        .follow-section {
+            background-color: #F8F4F9;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-icon img {
+            width: 50px; 
+            height: 50px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .social-icon img:hover {
+            transform: translateY(-5px) scale(1.1);
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+        }
+
+        
+        footer {
+            background-color: #6A057F; 
+            color: #fff;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 15px;
+            }
+
+            .nav-links {
+                position: fixed;
+                background-color: rgba(255, 255, 255, 0.95);
+                height: 100vh;
+                width: 100%;
+                flex-direction: column;
+                clip-path: circle(100px at 90% -20%);
+                -webkit-clip-path: circle(100px at 90% -20%);
+                transition: all 0.5s ease-out;
+                top: 0;
+                right: 0;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+                transform: translateX(100%); 
+            }
+
+            .nav-links.nav-active {
+                transform: translateX(0%);
+                clip-path: circle(1500px at 90% -20%);
+                -webkit-clip-path: circle(1500px at 90% -20%);
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+                opacity: 0; 
+            }
+
+            .nav-links li a {
+                font-size: 1.5em;
+                color: #6A057F;
+            }
+
+            .burger {
+                display: block;
+                z-index: 1001; 
+            }
+
+            .burger.toggle .line1 {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .burger.toggle .line2 {
+                opacity: 0;
+            }
+            .burger.toggle .line3 {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            @keyframes navLinkFade {
+                from {
+                    opacity: 0;
+                    transform: translateX(50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
+
+            .nav-links li {
+                animation: navLinkFade 0.5s ease forwards 0.3s;
+            }
+
+
+            .hero-content h1 {
+                font-size: 3em;
+            }
+
+            .hero-content h2 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr; 
+            }
+
+            .skills-grid, .project-grid {
+                grid-template-columns: 1fr; 
+            }
+
+            .contact-form {
+                padding: 0 15px;
+            }
+        }
+
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Yemnet Birhanu</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#follow">Follow</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Yemnet Birhanu</h1>
+            <h2>Aspiring Architect & Creative Mind</h2>
+            <p>Welcome to my personal portfolio. Explore my journey and passion for design.</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Yemnet Birhanu, an 11th-grade student at KUESSC with a burning passion for architecture. My dream is to create spaces that are not only functional but also beautiful, inspiring, and unique. I believe in the power of design to shape experiences and leave a lasting impact.</p>
+                    <p>Welcome to my portfolio! I'm excited to showcase my work, which combines my architectural vision with my developing front-end skills (HTML, CSS, and JavaScript). I'm focused on creating clean, functional designs and translating my architectural sensibilities into the digital realm. Explore my projects below, and I welcome your feedback!</p>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3>Architectural Design</h3>
+                    <p>Conceptualization, Sketching, Space Planning, Ideation.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Creativity & Innovation</h3>
+                    <p>Problem-solving with unique and imaginative solutions.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Digital Tools (Basic)</h3>
+                    <p>Familiarity with design software (e.g., basic CAD knowledge).</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Web Development (front-end Developer)</h3>
+                    <p>HTML, CSS, JavaScript (currently learning and applying).</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Communication</h3>
+                    <p>Articulating ideas and collaborating effectively.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Research</h3>
+                    <p>Exploring and understanding architectural principles and history.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2>My Projects & Architectural Sketches</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <img src="image/floor.jpg" class="project-img">
+                    <h3>Modern Urban Apartment Layout</h3>
+                    <p>This is a detailed floor plan for a multi-room apartment, featuring a kitchen, dining area, living room, and at least two bedrooms with adjoining bathrooms, designed for contemporary urban living.</p>
+                    
+                </div>
+                <div class="project-item">
+                    <img src= "image/church.jpg" alt="Architectural Sketch 2" class="project-img">
+                    <h3>Classical Church with Bell Tower</h3>
+                    <p>This is a pencil sketch of a traditional church building, characterized by a prominent bell tower topped with a spire and cross, and set against a backdrop of hills or mountains.</p>
+                    
+                </div>
+                <div class="project-item">
+                    <img src= "image/room.jpg"class="project-img">
+                    <h3>Compact Studio Apartment Design</h3>
+                    <p>This image displays two views of a modern studio apartment: a top-down floor plan showing the layout of the living space, bedroom, kitchen, and bathroom, and an eye-level elevation view detailing the kitchen and bedroom areas.</p>
+                    
+                </div>
+            </div>
+            <div class="writing-samples">
+                <h3>My Writing Samples</h3>
+                <div class="writing-sample-item">
+                    <h4>Sample Writing 1: The Lost Kingdom</h4>
+                    <p><em>
+
+Anya lived a simple life in the village of Oakhaven, nestled beside a dark, whispering forest.  Stories of a lost kingdom, Eldoria, hidden within the forest, were dismissed as old wives' tales – until Anya found a shimmering, silver key tucked inside an ancient book.  The book spoke of a hidden passage, guarded by ancient magic, leading to Eldoria, a kingdom of breathtaking beauty and powerful magic, lost centuries ago.
+<br> <br>
+Anya, accompanied by her childhood friend, Liam, a skilled archer with a gentle heart, decided to seek the lost kingdom.  Their journey began at the edge of the forest, where ancient trees twisted into grotesque shapes, and the air hung heavy with an unnatural stillness. They followed clues hidden within the book, facing trials that tested their courage and their friendship.
+<br> <br>
+They encountered mischievous sprites who guarded enchanted bridges, solved riddles carved into ancient stones, and navigated treacherous paths through whispering canyons. Liam's archery skills proved invaluable, while Anya's quick wit and unwavering belief in the legend kept their spirits high.
+<br> <br>
+Along the way, they met Elara, a wise old woman who lived in a hidden grove.  Elara revealed that the key wasn’t just a key to a door, but a key to unlocking a powerful magic within Anya – a magic that could only be used for good.  Anya discovered she could communicate with the forest itself, hearing the whispers of the trees and understanding their secrets.
+<br> <br>
+Finally, after many challenges, they found the hidden passage – a shimmering waterfall that concealed an entrance to Eldoria.  The kingdom was even more magnificent than the legends described:  towers of crystal, gardens filled with glowing flowers, and a river that flowed with liquid starlight.
+<br> <br>
+But Eldoria wasn't deserted.  A shadow creature, born of ancient darkness, had taken root, corrupting the land and its people.  Anya, with her newfound magic, Liam's unwavering support, and the help of the kingdom's few remaining inhabitants, had to confront the shadow and restore Eldoria to its former glory. Their quest to find the lost kingdom became a fight to save it – a battle where courage, friendship, and the power of belief would be their greatest weapons. The fate of Eldoria, and perhaps even the surrounding lands, rested on their shoulders.</em></p>
+                </div>
+                <div class="writing-sample-item">
+                    <h4>Sample Writing 2: Just the two of us</h4>
+                    <p><em>
+
+Elara, a talented but shy bookbinder, lived a quiet life in a small seaside town.  Her days were filled with the scent of leather and glue, the quiet rustle of turning pages, and the comforting rhythm of her work.  She preferred the company of books to people, finding solace in their stories and characters.  Romance, she believed, was something found only in the pages she bound.
+<br><br>
+Then Liam arrived.  A charming artist with a laugh that could fill a room, Liam opened a small art studio across the street from Elara's shop.  His vibrant paintings, full of life and color, were a stark contrast to Elara's quiet world of ink and paper.  He seemed to notice her, his smiles and friendly waves breaking through her carefully constructed shell.
+<br><br>
+At first, Elara resisted.  She was comfortable in her solitude, content with her quiet life.  But Liam was persistent, his kindness gentle and unwavering.  He’d leave a single sunflower on her workbench, a splash of yellow against the muted browns of her workspace.  He’d bring her steaming mugs of cocoa on chilly mornings, the warmth seeping into her heart as much as her hands.
+<br><br>
+Slowly, Elara found herself drawn to his warmth.  She started leaving small, intricately bound books on his workbench, each one a silent expression of her growing affection.  He’d respond with sketches of her, capturing the quiet intensity of her gaze, the way her brow furrowed in concentration.
+<br><br>
+Their conversations, initially hesitant and brief, blossomed into long evenings spent sharing stories, dreams, and quiet laughter.  He discovered her love for forgotten tales, her passion for the craft, and the hidden depths beneath her quiet exterior.  She discovered his passion for art, his gentle soul, and his unwavering belief in her.
+<br><br>
+Their relationship wasn't a whirlwind romance; it was a gentle unfolding, a quiet understanding that bloomed between two souls who found solace and joy in each other's company.  It was a romance built on shared moments, quiet gestures, and a growing affection that deepened with each passing day.  It was, simply, just the two of them, finding love in the quiet spaces between the words, the colors, and the shared laughter that filled their lives.  Their love story, unlike those she bound in leather, was one she was living, and it was beautiful.</em></p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p>I'm always open to discussing new projects, collaborations, or just connecting. Feel free to reach out!</p>
+            <form class="contact-form" action="YOUR_FORM_SUBMISSION_URL" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="follow" class="follow-section">
+        <div class="container">
+            <h2>Follow My Journey</h2>
+            <p>Connect with me on social media to see more of my work and updates!</p>
+            <div class="social-links">
+                <a href="#" target="_blank" class="social-icon"><img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn"></a>
+                <a href="#" target="_blank" class="social-icon"><img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" alt="Instagram"></a>
+                <a href="#" target="_blank" class="social-icon"><img src="https://img.icons8.com/ios-filled/50/000000/pinterest.png" alt="Pinterest"></a>
+                </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Yemnet Birhanu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    
+                    const navLinks = document.querySelector('.nav-links');
+                    const burger = document.querySelector('.burger');
+                    if (navLinks.classList.contains('nav-active')) {
+                        navLinks.classList.remove('nav-active');
+                        burger.classList.remove('toggle');
+                        
+                        navLinks.querySelectorAll('li').forEach(item => {
+                            item.style.animation = '';
+                        });
+                    }
+                });
+            });
+
+            const burger = document.querySelector('.burger');
+            const navLinks = document.querySelector('.nav-links');
+            const navItems = document.querySelectorAll('.nav-links li');
+
+            burger.addEventListener('click', () => {
+                
+                navLinks.classList.toggle('nav-active');
+
+                navItems.forEach((link, index) => {
+                    if (link.style.animation) {
+                        link.style.animation = '';
+                    } else {
+                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                    }
+                });
+                burger.classList.toggle('toggle');
+            });
+
+            const sections = document.querySelectorAll('section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            const heroSection = document.getElementById('home');
+            if (heroSection) {
+                setTimeout(() => {
+                    heroSection.classList.add('fade-in');
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
